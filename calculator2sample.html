@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <title>Sample size calculator for AUC difference</title>
+  <script src="box-muller.js"></script>
+  <script src="gaussian.js"></script>
+  <script src="script2sample.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="row mb-3">
+   <h2 class="col-sm-4 offset-md-4 text-center">Sample size calculator for estimating AUC difference</h2>
+
+  </div>
+
+  <form id="form" class="needs-validation" novalidate>
+    <div class="row mb-3">
+      <label for="alpha" class="col-sm-3 col-form-label offset-md-3">
+        Significance level
+      </label>
+      <div class="col-sm-3">
+        <input type="number" step="any" min="0.000001" max="0.999999" class="form-control" id="alpha" required placeholder="standard value is 0.05">
+        <div class="invalid-feedback">
+          Please enter a number greater than 0 and smaller than 1
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="assurance" class="col-sm-3 col-form-label offset-md-3">
+        Assurance probability
+      </label>
+      <div class="col-sm-3">
+        <input type="number" step="any" min="0.000001" max="0.999999" class="form-control" id="assurance" required placeholder="e.g., 0.9">
+        <div class="invalid-feedback">
+          Please enter a number greater than 0 and smaller than 1
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="theta1" class="col-sm-3 col-form-label offset-md-3">
+        Value of AUC from reference test
+      </label>
+      <div class="col-sm-3">
+        <input onkeyup="validateTheta2AndDelta0()" type="number" step="any" min="0.000001" max="0.999999" class="form-control" id="theta1" required placeholder="e.g., 0.7">
+        <div class="invalid-feedback">
+          Please enter a number greater than 0 and smaller than 1
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="theta2" class="col-sm-3 col-form-label offset-md-3">
+        Value of AUC from improved test
+      </label>
+      <div class="col-sm-3">
+        <input onkeyup="validateTheta2AndDelta0()" type="number" step="any" min="0.000001" max="0.999999" class="form-control" id="theta2" required placeholder="e.g., 0.9">
+        <div class="invalid-feedback">
+          Please enter a number greater than AUC from the reference test and smaller than 1
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="delta0" class="col-sm-3 col-form-label offset-md-3">
+        Lower bound of confidence limit
+      </label>
+      <div class="col-sm-3">
+        <input onkeyup="validateTheta2AndDelta0()" type="number" step="any" min="0.000001" max="0.999999" class="form-control" id="delta0" required placeholder="e.g., 0.1">
+        <div class="invalid-feedback">
+          Please enter a number greater than 0 and smaller than the 2nd AUC minus the 1st AUC
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="rho" class="col-sm-3 col-form-label offset-md-3">
+        Correlation between two AUCs
+      </label>
+      <div class="col-sm-3">
+        <input type="number" step="any" min="-0.999999" max="0.999999" class="form-control" id="rho" required placeholder="typically >= 0, e.g., 0.6">
+        <div class="invalid-feedback">
+          Please enter a number greater than -1 and smaller than 1
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="size-ratio" class="col-sm-3 col-form-label offset-md-3">
+        Ratio of sample sizes in control/disease groups
+      </label>
+      <div class="col-sm-3">
+        <input type="number" step="any" min="0.000001" class="form-control" id="size-ratio" required placeholder="e.g., 1">
+        <div class="invalid-feedback">
+          Please enter a positive number
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="sd-ratio1" class="col-sm-3 col-form-label offset-md-3">
+        Ratio of standard deviations in control/disease groups for reference test
+      </label>
+      <div class="col-sm-3">
+        <input type="number" step="any" min="0.000001" class="form-control" id="sd-ratio1" required placeholder="e.g., 1">
+        <div class="invalid-feedback">
+          Please enter a positive number
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="sd-ratio2" class="col-sm-3 col-form-label offset-md-3">
+        Ratio of standard deviations in control/disease groups for improved test
+      </label>
+      <div class="col-sm-3">
+        <input type="number" step="any" min="0.000001" class="form-control" id="sd-ratio2" required placeholder="e.g., 1">
+        <div class="invalid-feedback">
+          Please enter a positive number
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <button id="calculate-button" type="submit" class="btn btn-primary col-sm-4 offset-md-4" onclick="calculate(event)">Calculate</button>
+    </div>
+  </form>
+
+  <div class="row mb-3">
+    <div id="result" class="col-sm-6 offset-md-3 text-center alert alert-primary d-none" role="alert">
+      <u><h3>Result</h3></u>
+      <div id="dynamic-data"></div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
