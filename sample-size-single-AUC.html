@@ -92,14 +92,18 @@
     </div>
 
     <div class="row mb-3 justify-content-center">
-      <button id="calculate-button" type="submit" class="btn btn-primary col-sm-4" onclick="calculate(event)">Calculate</button>
+      <div class="col-sm-4">
+        <button id="calculate-button" type="submit" class="btn btn-primary w-100" onclick="calculate(event)">Calculate</button>
+      </div>
     </div>
   </form>
 
   <div class="row mb-3 justify-content-center">
-    <div id="result" class="col-sm-6 text-center alert alert-primary d-none" role="alert">
-      <u><h3>Result</h3></u>
-      <div id="dynamic-data"></div>
+    <div class="col-sm-6">
+      <div id="result" class="text-center alert alert-primary d-none w-100" role="alert">
+        <u><h3>Result</h3></u>
+        <div id="dynamic-data"></div>
+      </div>
     </div>
   </div>
 
