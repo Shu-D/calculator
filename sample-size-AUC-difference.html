@@ -24,7 +24,7 @@
         Significance level
       </label>
       <div class="col-sm-3">
-        <input type="number" step="any" min="0.000001" max="0.999999" class="form-control" id="alpha" required placeholder="standard value is 0.05">
+        <input type="number" step="any" min="0.000001" max="0.999999" autocomplete="off" class="form-control" id="alpha" required placeholder="standard value is 0.05">
         <div class="invalid-feedback">
           Please enter a number greater than 0 and smaller than 1
         </div>
@@ -36,7 +36,7 @@
         Assurance probability
       </label>
       <div class="col-sm-3">
-        <input type="number" step="any" min="0.000001" max="0.999999" class="form-control" id="assurance" required placeholder="e.g., 0.9">
+        <input type="number" step="any" min="0.000001" max="0.999999" autocomplete="off" class="form-control" id="assurance" required placeholder="e.g., 0.9">
         <div class="invalid-feedback">
           Please enter a number greater than 0 and smaller than 1
         </div>
@@ -48,7 +48,7 @@
         Value of AUC from reference test
       </label>
       <div class="col-sm-3">
-        <input onkeyup="validateTheta2AndDelta0()" type="number" step="any" min="0.000001" max="0.999999" class="form-control" id="theta1" required placeholder="e.g., 0.7">
+        <input onkeyup="validateTheta2AndDelta0()" type="number" step="any" min="0.000001" max="0.999999" autocomplete="off" class="form-control" id="theta1" required placeholder="e.g., 0.7">
         <div class="invalid-feedback">
           Please enter a number greater than 0 and smaller than 1
         </div>
@@ -60,7 +60,7 @@
         Value of AUC from improved test
       </label>
       <div class="col-sm-3">
-        <input onkeyup="validateTheta2AndDelta0()" type="number" step="any" min="0.000001" max="0.999999" class="form-control" id="theta2" required placeholder="e.g., 0.9">
+        <input onkeyup="validateTheta2AndDelta0()" type="number" step="any" min="0.000001" max="0.999999" autocomplete="off" class="form-control" id="theta2" required placeholder="e.g., 0.9">
         <div class="invalid-feedback">
           Please enter a number greater than AUC from the reference test and smaller than 1
         </div>
@@ -72,7 +72,7 @@
         Lower bound of confidence limit
       </label>
       <div class="col-sm-3">
-        <input onkeyup="validateTheta2AndDelta0()" type="number" step="any" min="0.000001" max="0.999999" class="form-control" id="delta0" required placeholder="e.g., 0.1">
+        <input onkeyup="validateTheta2AndDelta0()" type="number" step="any" min="0.000001" max="0.999999" autocomplete="off" class="form-control" id="delta0" required placeholder="e.g., 0.1">
         <div class="invalid-feedback">
           Please enter a number greater than 0 and smaller than the 2nd AUC minus the 1st AUC
         </div>
@@ -84,7 +84,7 @@
         Correlation between two AUCs
       </label>
       <div class="col-sm-3">
-        <input type="number" step="any" min="-0.999999" max="0.999999" class="form-control" id="rho" required placeholder="typically >= 0, e.g., 0.6">
+        <input type="number" step="any" min="-0.999999" max="0.999999" autocomplete="off" class="form-control" id="rho" required placeholder="typically >= 0, e.g., 0.6">
         <div class="invalid-feedback">
           Please enter a number greater than -1 and smaller than 1
         </div>
@@ -96,7 +96,7 @@
         Ratio of sample sizes in control/disease groups
       </label>
       <div class="col-sm-3">
-        <input type="number" step="any" min="0.000001" class="form-control" id="size-ratio" required placeholder="e.g., 1">
+        <input type="number" step="any" min="0.000001" autocomplete="off" class="form-control" id="size-ratio" required placeholder="e.g., 1">
         <div class="invalid-feedback">
           Please enter a positive number
         </div>
@@ -108,7 +108,7 @@
         Ratio of standard deviations in control/disease groups for reference test
       </label>
       <div class="col-sm-3">
-        <input type="number" step="any" min="0.000001" class="form-control" id="sd-ratio1" required placeholder="e.g., 1">
+        <input type="number" step="any" min="0.000001" autocomplete="off" class="form-control" id="sd-ratio1" required placeholder="e.g., 1">
         <div class="invalid-feedback">
           Please enter a positive number
         </div>
@@ -120,7 +120,7 @@
         Ratio of standard deviations in control/disease groups for improved test
       </label>
       <div class="col-sm-3">
-        <input type="number" step="any" min="0.000001" class="form-control" id="sd-ratio2" required placeholder="e.g., 1">
+        <input type="number" step="any" min="0.000001" autocomplete="off" class="form-control" id="sd-ratio2" required placeholder="e.g., 1">
         <div class="invalid-feedback">
           Please enter a positive number
         </div>
