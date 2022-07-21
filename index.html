@@ -4,6 +4,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calculators</title>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J3DG18GX35"></script>
   <script>
@@ -18,12 +21,32 @@
 <body>
   <p><h2 style="color: #696969;">Online Calculators for Sample Size Planning in Diagnostic Studies</h2></p>
   <p>An implementation of sample size formulas developed by Di Shu and Guangyong Zou.</p>
-  <ul>
-    <li><a href="sample-size-single-AUC.html">Sample size calculator for a single AUC</a>
-    <li><a href="sample-size-AUC-difference.html">Sample size calculator for AUC difference</a>
-  </ul>
+
 
   <p>Author: Di Shu</p>
   <p>Maintainer: Di Shu &lt;shudi1991 at gmail.com&gt;</p>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">For estimating an AUC</h5>
+            <p class="card-text"></p>
+            <a href="sample-size-single-AUC.html" class="btn btn-primary">Go to sample size calculator</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">For estimating AUC difference</h5>
+            <p class="card-text"></p>
+            <a href="sample-size-AUC-difference.html" class="btn btn-primary">Go to sample size calculator</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
