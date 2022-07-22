@@ -5,7 +5,7 @@ window.onload = () => {
       if (inputElement.value != oldInputValues.get(inputElement)) {
         const resultElement = document.getElementById("result");
         resultElement.classList.add("d-none");
-        oldInputValues.set(inputElement,inputElement.value);
+        oldInputValues.set(inputElement, inputElement.value);
       }
 
       inputElement.parentNode.classList.add('was-validated');
