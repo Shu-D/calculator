@@ -1,7 +1,17 @@
 window.onload = () => {
   const oldInputValues = new Map();
   document.querySelectorAll("input").forEach((inputElement) => {
-    inputElement.addEventListener("keyup", () => {
+    inputElement.addEventListener("keydown", (event) => {
+      if (inputElement.value.length >= 6
+          && event.keyCode !== 46 // keycode for delete
+          && event.keyCode !== 8 // keycode for backspace
+      ) {
+        event.preventDefault();
+        return;
+      }
+    });
+
+    inputElement.addEventListener("keyup", (event) => {
       if (inputElement.value != oldInputValues.get(inputElement)) {
         const resultElement = document.getElementById("result");
         resultElement.classList.add("d-none");
@@ -9,6 +19,7 @@ window.onload = () => {
       }
 
       inputElement.parentNode.classList.add('was-validated');
+
     });
 
   });
